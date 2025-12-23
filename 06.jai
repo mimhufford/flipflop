@@ -17,9 +17,12 @@ day6 :: (input: string) -> string, string, string
             return result;
         }
 
+        snaps := lcm(1000/gcd(dx, 1000), 1000/gcd(dy, 1000));
+        times := 1000 / snaps;
+
         p1 += count(dx, dy, 1, 100);
-        p2 += count(dx, dy, 1000, 3600);
-        p3 += count(dx, dy, 1000, 31556926);
+        p2 += times * count(dx, dy, snaps, 3600);
+        p3 += times * count(dx, dy, snaps, 31556926);
     }
 
     return tprint("%", p1), tprint("%", p2), tprint("%", p3);
